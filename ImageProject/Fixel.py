@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np 
 import cv2
 from PIL import Image
+import io
 
 def power_law_transform(img, gamma):
     normalized_img = img / 255.0
@@ -31,18 +32,12 @@ def Morphological_Transformation(img, operation_type,kernel_size,iterations):
     return result
     
 
-    
-
-
-
-
 def welcome_page():
     st.title(":blue[Welcome to Fixel ] :camera:")
     st.subheader("",divider="gray")
     st.subheader(":blue[Fixel] is a web application that allows you to apply different image processing techniques to enhance and transform your photos.")
     st.subheader("With just a few clicks, you can upload an image and choose from a variety of tools such as :red[Thresholding], :blue[Power-Law (Gamma) Transformation], :green[ Linear Negative], and :violet[Morphological Operations].")
     st.subheader("Try it out and see how simple image processing can create :rainbow[powerful results!]")
-    st.link_button("Fix your pixel", "http://localhost:8501/")
 
 def main_page():
     st.title(":blue[Image Enhancement]")
@@ -108,7 +103,20 @@ def main_page():
             st.image(original, caption="Original Image",use_column_width=True)
         with col2:
             st.image(output_rgb, caption="Enhanced Image",use_column_width=True)
-            
+
+        st.subheader("Download it Now!! :smile:")
+
+        image_pil = Image.fromarray(output_rgb)
+        buffer = io.BytesIO()
+        image_pil.save(buffer, format="PNG")
+        buffer.seek(0)
+        st.download_button(
+        label="Download image",
+        data=buffer,
+        file_name="EnhancedImage.png",
+        mime="image/png"
+    )
+        
 
    
 
@@ -128,7 +136,7 @@ def enhancementmethods_page():
         st.subheader(":gray[Reduces image complexity for easier analysis.]")
         st.header("4.Edge Detection (after enhancement):")
         st.subheader(":gray[To highlight the borders of objects.]")
-        st.image("C:/Users/Maryam/Iproject/thresholded.jpg",width=560)
+        st.image("ImageProject/thresholded.jpg",width=560)
     with tab2:
         st.title(":violet[Linear Negative Transformation]")
         st.subheader("",divider="gray")
@@ -159,7 +167,7 @@ def enhancementmethods_page():
         st.subheader("gray[Enhances certain intensity ranges before applying edge detection or segmentation.]")
         st.subheader("4.Improving Visibility:")
         st.subheader(":gray[Helpful for images with poor lighting or uneven brightness.]")
-        st.image("C:/Users/Maryam/Iproject/power-law.jpg")
+        st.image("ImageProject/power-law.jpg")
     with tab4:
         st.title(":violet[Morphological Transformation:]")
         st.subheader("",divider="gray")
@@ -204,13 +212,13 @@ def aboutus_page():
     st.title(":violet[Fixel]")
     st.subheader("",divider="gray")
     st.subheader("We are three second-year students at :violet[Alamein International University], working together on a project for the :violet[Image Processing] course as part of our Computer Science studies. Our project is a web application called *:violet[Fixel]*, which is designed to enhance and edit images using digital image processing techniques. Through this project, we aim to apply what we’ve learned in a practical way and gain more experience in software development and image processing.")
-    st.image("C:/Users/Maryam/Iproject/finallogo.png", caption="Fixel to fix your pixel")
+    st.image("ImageProject/finallogo.png", caption="Fixel to fix your pixel")
 
 
 
 
-page = st.sidebar.selectbox(
-    "How would you like to be contacted?",
+page = st.sidebar.radio(
+    "Choose a page :smile: ",
     ("Welcome to Fixel","Fix Your Pixel", "Enhancement Methods", "Reach Us","Our Story")
 )
 
