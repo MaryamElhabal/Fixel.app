@@ -100,9 +100,9 @@ def main_page():
         original= cv2.cvtColor(img_cv,cv2.COLOR_BGR2RGB)
         col1,col2 =st.columns(2)
         with col1:
-            st.image(original, caption="Original Image",use_column_width=True)
+            st.image(original, caption="Original Image",use_container_width=True)
         with col2:
-            st.image(output_rgb, caption="Enhanced Image",use_column_width=True)
+            st.image(output_rgb, caption="Enhanced Image",use_container_width=True)
 
         st.subheader("Download it Now!! :smile:")
 
