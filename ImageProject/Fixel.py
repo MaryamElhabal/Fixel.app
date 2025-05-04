@@ -100,9 +100,9 @@ def main_page():
         original= cv2.cvtColor(img_cv,cv2.COLOR_BGR2RGB)
         col1,col2 =st.columns(2)
         with col1:
-            st.image(original, caption="Original Image",use_container_width=True)
+            st.image(original, caption="Original Image")
         with col2:
-            st.image(output_rgb, caption="Enhanced Image",use_container_width=True)
+            st.image(output_rgb, caption="Enhanced Image")
 
         st.subheader("Download it Now!! :smile:")
 
@@ -136,7 +136,7 @@ def enhancementmethods_page():
         st.subheader(":gray[Reduces image complexity for easier analysis.]")
         st.header("4.Edge Detection (after enhancement):")
         st.subheader(":gray[To highlight the borders of objects.]")
-        st.image("ImageProject/thresholded.jpg",width=560)
+        st.image("https://www.researchgate.net/publication/354846947/figure/fig1/AS:1072109933576192@1632622335609/Threshold-based-segment-a-original-image-b-the-resulting-image-after-segmentation.ppm",width=570)
     with tab2:
         st.title(":violet[Linear Negative Transformation]")
         st.subheader("",divider="gray")
@@ -167,7 +167,7 @@ def enhancementmethods_page():
         st.subheader("gray[Enhances certain intensity ranges before applying edge detection or segmentation.]")
         st.subheader("4.Improving Visibility:")
         st.subheader(":gray[Helpful for images with poor lighting or uneven brightness.]")
-        st.image("ImageProject/power-law.jpg")
+        st.image("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEic60T8Sw0t6TM0MdTxBd6bU1F2O6xuxfyHKuN7RjxFV0dXa9XjCCUL29Ec_aB1A_BzaEKJRAv9UH-Ib-Zp8hDctyx0nQjScX05oZFmpK6xtHcgMfClt2SmAkRGL46I8_oDsUO846UQiD47/s1600/001.jpg")
     with tab4:
         st.title(":violet[Morphological Transformation:]")
         st.subheader("",divider="gray")
@@ -212,7 +212,7 @@ def aboutus_page():
     st.title(":violet[Fixel]")
     st.subheader("",divider="gray")
     st.subheader("We are three second-year students at :violet[Alamein International University], working together on a project for the :violet[Image Processing] course as part of our Computer Science studies. Our project is a web application called *:violet[Fixel]*, which is designed to enhance and edit images using digital image processing techniques. Through this project, we aim to apply what we’ve learned in a practical way and gain more experience in software development and image processing.")
-    st.image("ImageProject/finallogo.png", caption="Fixel to fix your pixel")
+    st.image("finallogo.png", caption="Fixel to fix your pixel")
 
 
 
